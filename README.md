@@ -27,6 +27,8 @@ The way it works is as follows:
 - If given an object, it will verify the presence of the specified keys on the arguments and compare their values. **Unspecified keys are not compared.** (`schemaCompare({foo:null}, {foo: 1}, {foo: 2}) === false`, `schemaCompare({foo:null},  {foo: 1, bar: 2}, {foo: 1, bar: 3}) === true`)
 - The first index of an array in the schema and the values of the keys in the schema will recursively call `schemaCompare` to compare the associated data from the arguments (`schemaCompare([ {foo:null} ], [{foo:1}, {foo:2}], [{foo:1}, {foo:2}]) === true`, `schemaCompare([ {foo:null} ], [{foo:1}, {foo:2}], [{foo:1}, {foo:3}]) === false`) 
 
+A quirk of the way this works is that you can perform a strict equality check on objects / arrays by treating them as simple values in the schema itself. For example, `schemaCompare({foo: null}, {foo: []}, {foo: []}) === false` but `var arr = []; schemaCompare({foo: null}, {foo: arr}, {foo: arr}) === false`.
+
 When you need to specify a key in an object to be compared, but the values are simple values, you can specify anything except an array or an object. I make a point of using `null` in the examples since `typeof null === 'object'` to illustrate that this case is covered.
 
 Multiple arguments to an array in the schema definition is erroneous; only the first index will be checked. No error checking is done on the structure of the data you pass: if you pass data that doesn't conform to your schema, you will likely get not-very-helpful error messages sourced in this module.
