@@ -1,0 +1,34 @@
+{
+  "name": "schema-compare",
+  "version": "1.0.0",
+  "description": "Deep compare two objects based on a schema",
+  "main": "index.js",
+  "dependencies": {
+    "istanbul": "^0.3.17",
+    "should": "^7.0.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
+  },
+  "scripts": {
+    "test": "mocha -u bdd -R dot --bail test.js",
+    "cov": "istanbul cover node_modules/.bin/_mocha -- -u bdd -R dot --bail test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myndzi/schema-compare.git"
+  },
+  "keywords": [
+    "schema",
+    "deep",
+    "compare"
+  ],
+  "author": "Kris Reeves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myndzi/schema-compare/issues"
+  },
+  "homepage": "https://github.com/myndzi/schema-compare#readme"
+}
