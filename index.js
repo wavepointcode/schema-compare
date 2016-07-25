@@ -2,7 +2,7 @@
 
 function cmp(schema, oldVal, newVal) {
   return (
-    typeof schema !== 'object' || schema === null?
+    typeof schema !== 'object' || schema === null || oldVal === null || newVal === null || oldVal === undefined || newVal === undefined?
       oldVal === newVal
       :
       Array.isArray(schema)?
